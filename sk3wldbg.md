@@ -17,7 +17,7 @@ I quickly realized that if had an x86 emulator that used IDA as its memory store
 that I could stop writing new scripts and just run the emulator whenever I encountered
 obfuscated code. Thus was born the [x86emu plugin](https://github.com/cseagle/x86emu).
 
-<p align="center"><img src="./images/x86emu.png" width="300" height="300">
+<p align="center"><img src="./images/x86emu.png">
 
 At the time, I didn't really want to write an x86 emulator from scratch, and I searched
 for existing emulators that I could modify to suit my purposes. QEMU was the most likely
@@ -81,7 +81,7 @@ on debugging with IDA and Bochs.
 With the Hex-Rays Bochs debugger as a model for emulation based debugging in IDA, all I needed was the ability
 to emulate many instruction sets which became a reality with the release of the Unicorn Engine.
 
-<p align="center"><img src="./images/sk3wldbg.png" width="300" height="300">
+<p align="center"><img src="./images/sk3wldbg.png">
 
 Debugger plugins must instantiate a debugger_t object then set the global dbg pointer in IDA to point to the 
 debugger_t instance. The majority of the implementation of a debugger is implemented in a mandatory callback
@@ -110,14 +110,14 @@ solution file. Copy the resulting plugin (sk3wldbg_user) into IDA's plugins dire
 Unicorn installed on your system and if all goes well, sk3wldbg will show up and be available in IDA as a debugger
 option. 
 
-<p align="center"><img src="./images/select.png" width="300" height="300">
+<p align="center"><img src="./images/select.png">
 
 ## Usage
 
 After choosing Sk3wldbg as your debugger and setting some breakpoints, launch a debugging session using `Debugger/Start process`
 or the Start process toolbar button. Sk3wldbg asks where execution should begin.
 
-<p align="center"><img src="./images/start.png" width="300" height="300">
+<p align="center"><img src="./images/start.png">
 
 Select either the cursor location or the program entry point as your initial program counter value and control execution
 as you would any other process that you are debugging. NOTE: It is a good idea to set a breakpoint near the execution start
