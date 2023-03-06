@@ -13,7 +13,7 @@ changes back into the IDA database. When the scripts were finished, I could simp
 disassemble the modified bytes that were present in IDA. I still have an IDC script
 that will unpack UPX in place.
 
-I quickly realized that if had an x86 emulator that used IDA as its memory store,
+I quickly realized that if I'd had an x86 emulator that used IDA as its memory store,
 that I could stop writing new scripts and just run the emulator whenever I encountered
 obfuscated code. Thus was born the [x86emu plugin](https://github.com/cseagle/x86emu).
 
@@ -21,7 +21,7 @@ obfuscated code. Thus was born the [x86emu plugin](https://github.com/cseagle/x8
 
 At the time, I didn't really want to write an x86 emulator from scratch, and I searched
 for existing emulators that I could modify to suit my purposes. QEMU was the most likely
-candidate at the time but was almost too fully featured as I had not interest in anything
+candidate at the time but was almost too fully featured as I had no interest in anything
 other than the instruction set emulator and I did not want to invest the time to remove
 all of the hardware support that QEMU provided.
 
@@ -40,7 +40,7 @@ would serve as the core of a new debugger plugin - skw3ldbg.
 ## Debugger Plugins
 
 Most people are familiar on some level with IDA plugins. What people may not be as familiar with
-is the fact that are roughly four broad categories of plugin types (FIX, PROC, DBG, and "normal").
+is the fact that there are roughly four broad categories of plugin types (FIX, PROC, DBG, and "normal").
 Those interested in the finer points should refer to loader.hpp from the IDA SDK for more information
 about the distinction between each type. Across the IDA plugin ecosystem "normal" plugins are by far
 the most common among those that are publicly availble.
@@ -48,7 +48,7 @@ the most common among those that are publicly availble.
 A debugger (DBG) plugin is specifically designed to facilitate communications between IDA and
 and a debugger being used to run the code you have loaded in IDA. Each of the debuggers that 
 ship with IDA are implemented as debugger plugins and include local native debuggers for Windows,
-Linux and OS X ad well as shims that allow IDA to communicate with existing debuggers
+Linux and OS X as well as shims that allow IDA to communicate with existing debuggers
 (WinDbg and gdbserver) or one of Hex-Rays remote debugging servers available for several platforms.
 
 All standard debugging features are available when using these plugins such as launching new
@@ -67,13 +67,13 @@ Unique among the Hex-Rays provided debugger plugins is a one that allows x86 cod
 emulation which is then controlled by the provided IDA debugging interface. No attempt is made to provide
 a full execution environment for the code that you wish to emulate. In the simplest case, the IDA's Bochs
 debugger plugin simply maps the content of your IDA database into Bochs memory regions, allocates a stack
-regions in Bochs, initializes regiters with some sane defaults, then allows Bochs to begin the emulation.
+regions in Bochs, initializes registers with some sane defaults, then allows Bochs to begin the emulation.
 There are some signficant limitations to the fidelity of the emualtion however as no additional binaries
 required by the process such as libc.so or kernel32.dll are loaded into Bochs, nor does Bochs have access
 to a kernel which might be capable of handling system calls made by the process under emulation.
 
 Please refer to [Debugging with Bochs](https://www.hex-rays.com/wp-content/uploads/2019/12/debugging_bochs.pdf) and
-[Boch's Help](https://www.hex-rays.com/products/ida/support/idadoc/1329.shtml) form more information
+[Boch's Help](https://www.hex-rays.com/products/ida/support/idadoc/1329.shtml) for more information
 on debugging with IDA and Bochs.
 
 ## Sk3wldbg
@@ -99,13 +99,13 @@ is mapped into Unicorn and initial register values are assigned. Emulation occur
 synchronization is performed using a shared event queue and IDA qsemaphore objects.
 
 Once execution begins, the user experience is similar to that of using any of IDAs other debuggers, including
-the use of breakpoints, execution controls and the ability to take memory snapshots.  Breakpoints more closely
+the use of breakpoints, execution controls and the ability to take memory snapshots. Breakpoints more closely
 resemble hardware breakpoints (software breakpoints are not inserted in the Unicorn memory space) and they are
 monitored by hooking the execution of each instruction in the execution thread. 
 
 ## Installation
 
-Sk3wldbg is available on [github](https://github.com/cseagle/sk3wldbg) using the supplie Makefile or Visual Studio
+Sk3wldbg is available on [github](https://github.com/cseagle/sk3wldbg) using the supplied Makefile or Visual Studio
 solution file. Copy the resulting plugin (sk3wldbg_user) into IDA's plugins directory and make sure that you have
 Unicorn installed on your system and if all goes well, sk3wldbg will show up and be available in IDA as a debugger
 option. 
